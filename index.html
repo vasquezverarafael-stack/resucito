@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Resucitó</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header{
+    background-color: #8B0000;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+nav{
+    background-color: #B22222;
+    padding: 10px;
+    text-align: center;
+}
+
+nav button, .dropbtn{
+    color: white;
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-right: 1px solid rgba(255,255,255,0.4);
+}
+
+nav button:last-child,
+.dropdown:last-child .dropbtn {
+    border-right: none;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropbtn {
+    background-color: #B22222;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff5f5;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.dropdown-content button {
+    background: none;
+    border: none;
+    color: black;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-content button:hover {
+    background-color: #f2dede;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+section{
+    padding: 30px;
+    display: none;
+}
+
+footer{
+    background-color: #8B0000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-top: 2px solid white;
+}
+
+.img-canto{
+    display: block;
+    margin: 30px auto;
+    width: 600px;
+}
+
+.canto-btn{
+    background-color: #8B0000;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.canto-btn:hover{
+    background-color: #A52A2A;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Resucitó</h1>
+<p>Un itinerario de formación cristiana</p>
+</header>
+
+<nav>
+<button onclick="mostrar('inicio')">Inicio</button>
+
+<div class="dropdown">
+    <button class="dropbtn">Cantos</button>
+    <div class="dropdown-content">
+        <button onclick="mostrar('precatecumenado')">
+            Precatecumenado
+        </button>
+
+        <button onclick="mostrar('catecumenado')">
+            Catecumenado
+        </button>
+
+        <button onclick="mostrar('eleccion')">
+            Elección
+        </button>
+
+        <button onclick="mostrar('virgen')">
+            Cantos a la Virgen María
+        </button>
+    </div>
+</div>
+</nav>
+
+<!-- INICIO -->
+<section id="inicio">
+<h2>¿Qué es el Camino?</h2>
+<p>
+El Camino Neocatecumenal es un itinerario de formación cristiana.
+</p>
+</section>
+
+<section id="precatecumenado">
+<h2>Precatecumenado</h2>
+<p>Aquí irán los cantos del precatecumenado.</p>
+</section>
+
+<section id="catecumenado">
+<h2>Catecumenado</h2>
+<p>Aquí irán los cantos del catecumenado.</p>
+</section>
+
+<section id="eleccion">
+<h2>Elección</h2>
+<p>Aquí irán los cantos de la elección.</p>
+</section>
+
+<!-- VIRGEN -->
+<section id="virgen">
+<h2>Cantos a la Virgen María</h2>
+
+<button class="canto-btn" onclick="mostrar('maria_camino')">
+María, Madre del Camino Ardiente
+</button>
+
+</section>
+
+<!-- CANTO -->
+<section id="maria_camino">
+
+<button class="canto-btn" onclick="mostrar('virgen')">
+⬅ Volver
+</button>
+
+<h2>María, Madre del Camino Ardiente</h2>
+
+<img src="maria_camino_ardiente.png" class="img-canto">
+
+<br>
+
+<!-- BOTONES AUDIO -->
+<button class="canto-btn" onclick="reproducirAudio()">
+▶ Play
+</button>
+
+<button class="canto-btn" onclick="detenerAudio()">
+⏹ Stop
+</button>
+
+<!-- AUDIO -->
+<audio id="audioMaria">
+    <source src="maria_camino_ardiente.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+</section>
+
+<footer>
+<p>© 2026 Camino Neocatecumenal</p>
+</footer>
+
+<script>
+function mostrar(id) {
+    const secciones = document.querySelectorAll("section");
+    secciones.forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+function reproducirAudio(){
+    document.getElementById("audioMaria").play();
+}
+
+function detenerAudio(){
+    const audio = document.getElementById("audioMaria");
+    audio.pause();
+    audio.currentTime = 0;
+}
+
+window.onload = function() {
+    mostrar("inicio");
+}
+</script>
+
+</body>
+</html>
