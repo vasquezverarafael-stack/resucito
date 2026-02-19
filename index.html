@@ -175,9 +175,13 @@ El Camino Neocatecumenal es un itinerario de formación cristiana.
 María, Madre del Camino Ardiente
 </button>
 
+<button class="canto-btn" onclick="mostrar('maria_iglesia')">
+María, Madre de la Iglesia
+</button>
+
 </section>
 
-<!-- CANTO -->
+<!-- CANTO: María, Madre del Camino Ardiente -->
 <section id="maria_camino">
 
 <button class="canto-btn" onclick="mostrar('virgen')">
@@ -207,6 +211,36 @@ María, Madre del Camino Ardiente
 
 </section>
 
+<!-- CANTO: María, Madre de la Iglesia -->
+<section id="maria_iglesia">
+
+<button class="canto-btn" onclick="mostrar('virgen')">
+⬅ Volver
+</button>
+
+<h2>María, Madre de la Iglesia</h2>
+
+<img src="maria_madre_de_la_Iglesia.png" class="img-canto">
+
+<br>
+
+<!-- BOTONES AUDIO -->
+<button class="canto-btn" onclick="reproducirAudioIglesia()">
+▶ Play
+</button>
+
+<button class="canto-btn" onclick="detenerAudioIglesia()">
+⏹ Stop
+</button>
+
+<!-- AUDIO -->
+<audio id="audioIglesia">
+    <source src="maria_madre_de_la_Iglesia.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+</section>
+
 <footer>
 <p>© 2026 Camino Neocatecumenal</p>
 </footer>
@@ -224,6 +258,16 @@ function reproducirAudio(){
 
 function detenerAudio(){
     const audio = document.getElementById("audioMaria");
+    audio.pause();
+    audio.currentTime = 0;
+}
+
+function reproducirAudioIglesia(){
+    document.getElementById("audioIglesia").play();
+}
+
+function detenerAudioIglesia(){
+    const audio = document.getElementById("audioIglesia");
     audio.pause();
     audio.currentTime = 0;
 }
